@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	
+	<!-- link css sheet -->
+	<link rel="stylesheet" type="text/css" href="mainPage.css">
+	<title>Ping Identity Mt.Fuji</title>
+	
+	<!-- Set background page colour -->
+	<style>body{background-color:whitesmoke;}</style>
+	
+</head>
+<body>
+	<h1 class="heading">Ping Identity Mt. Fuji</h1>
+	<br>
+	<table class="table" id="table1">
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Age</th>
+			<th>Height</th>
+		</tr>
+	</table>
+	<!-- <div class="table">
+		<script>
+			html = ''
+			$.each(data, function(key, value){
+			  html += "<div class=\"row\">";
+			  $.each(value, function(header, value2){
+			    html += "<div class=\"cell\">" + value2+ "</div>";
+			  })
+			  html += "</div>"
+			});
+			html += "</div>";
+			$(".table").append(html);
+		</script>
+	</div> -->
+	<div id="displayTable"></div>
+	<script type = "application/json">
+		var xmlhttp = new XMLHttpRequest();
+		var url = "http://localhost:3000/people";
+
+		xmlhttp.onreadystatechange = function() {
+	    	if (xmlhttp.readyState == 4 && xmlhttp.status == "200") {
+	    	    var peopleData = JSON.parse(xmlhttp.responseText);
+	    	    myFunction(peopleData);
+	   	 }
+		}
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+
+		var out = "<table border=1>";
+	    for(var i = 0; i < arr.length; i++) {
+	        out += "<tr>";
+	        for (j = 0; j < 3; j++) {
+	          out += "<td>"+arr[i][j]+"</td>";
+	        }
+	        out += "</tr>";
+	    }
+	    out += "</table>";
+	    document.getElementById("displayTable").innerHTML = out;
+	
+	</script>
+	<br>
+	<button id="submit">+ Add</button>
+	
+</body>
+
+
+
+
+
+	<!--  <script> 
+ 
+//anonymous callback
+function loadFile(callback) {
+    var file = new XMLHttpRequest();
+    file.overrideMimeType("application/json");
+  	file.open('GET','~/Desktop/Co-op/Ping/Mt_Fuji/DeveloperExerciseV2/src/main/java/resources/people.json', true);
+    file.onreadystatechange = function() {
+        if (file.readyState === 4 && file.status == "200") {
+            callback(file.responseText);
+        }
+    };
+   	file.send(null);
+}
+
+function init() {
+	 loadJSON(function(response) {
+	  // Parse JSON string into object
+	    var peopleJSON = JSON.parse(response);
+	    $.getJSON(url,
+	    		function (peopleJSON) {
+	    		    var tr;
+	    		    for (var i = 0; i < peopleJSON.length; i++) {
+	    		        tr = $('<tr/>');
+	    		        tr.append("<td>" + peopleJSON[i].firstName + "</td>");
+	    		        tr.append("<td>" + peopleJSON[i].lastName + "</td>");
+	    		        tr.append("<td>" + peopleJSON[i].age + "</td>");
+	    		        tr.append("<td>" + peopleJSON[i].height + "</td>");
+	    		        $('table').append(tr);
+	    		    }
+	    		});
+	 });
+}
+	</script>
+	<button id="submit">+ Add</button>
+	
+</body>
+
+
+<script> 
+ /*
+//anonymous callback
+function loadFile(callback) {
+    var file = new XMLHttpRequest();
+    file.overrideMimeType("application/json");
+  	file.open('GET','~/Desktop/Co-op/Ping/Mt_Fuji/DeveloperExerciseV2/src/main/java/resources/people.json', true);
+    file.onreadystatechange = function() {
+        if (file.readyState === 4 && file.status == "200") {
+            callback(file.responseText);
+        }
+    };
+   	file.send(null);
+}
+
+function init() {
+	 loadJSON(function(response) {
+	  // Parse JSON string into object
+	    var peopleJSON = JSON.parse(response);
+	    $.getJSON(url,
+	    		function (peopleJSON) {
+	    		    var tr;
+	    		    for (var i = 0; i < peopleJSON.length; i++) {
+	    		        tr = $('<tr/>');
+	    		        tr.append("<td>" + peopleJSON[i].firstName + "</td>");
+	    		        tr.append("<td>" + peopleJSON[i].lastName + "</td>");
+	    		        tr.append("<td>" + peopleJSON[i].age + "</td>");
+	    		        tr.append("<td>" + peopleJSON[i].height + "</td>");
+	    		        $('table').append(tr);
+	    		    }
+	    		});
+	 });
+}
+
+	/* $(document).ready(function (){
+		$.getJSON("/resources/people.json", function(data) {
+			var peopleData = [];
+			$.each(data, function(index,value){
+				peopleData.push(value);
+			}); var col = [];
+		for (var i=0;i<peopleData.length;i++){
+			for(var p in peopleData[i]){
+				if(col.indexOf(p===-1)){
+					col.push(p);
+				}
+			}
+		}
+		
+		//create table
+		var table = document.createElement("table");
+		
+		//table row
+		var row = table.insertRow(-1);
+		//table header
+		for(var i=0;i<col.length;i++){
+			var th = document.createElement("th");
+			th.innnerHTML=col[i];
+			row.appendChild(th);
+		}
+		
+		//populate table with json data
+		for(var i=0;i<people.length;i++){
+			row=table.insertRow(-1);
+			for(var j=0;j<col.length;j++){
+				var cell = row.insertCell(-1);
+				cell.innerHTML=people[i][col[j]];
+			}
+		}
+		
+		//add filled table to container
+		var tableContainer = document.getElementById("displayTable");
+		tableContainer.innerHTML="";
+		tableContainer.appendChild(table);
+    });
+});*/
+		
+		//extract values
+		
+	</script>-->
+
+</html>
